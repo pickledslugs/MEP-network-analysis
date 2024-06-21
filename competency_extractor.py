@@ -4,8 +4,8 @@ import pandas as pd
 import re
 import os
 
-def extract_PK(pdf_file, pages_range, output_filename, column_index=1):
-    export_folder = "export"  # Директория экспорта .csv таблиц
+def extract_competencies(pdf_file, pages_range, output_filename, column_index=1):
+    export_folder = "extracted"  # Директория экспорта .csv таблиц
 
     try:
         # Попытка чтения таблиц из указанного PDF и их объединения в датафрейм
@@ -77,9 +77,11 @@ def extract_PK(pdf_file, pages_range, output_filename, column_index=1):
     except Exception as e:
         print(f"Ошибка: {e}")
 
-# Обработка файлов
-extract_PK("pdf/26.05.06_oop_2023.pdf", '5-7',    "UK.csv",    column_index=1)
-extract_PK("pdf/26.05.06_oop_2023.pdf", '8-9',    "OPK.csv",   column_index=1)
-extract_PK("pdf/26.05.05_oop_2023.pdf", '8-20',   "05_PK.csv", column_index=0)
-extract_PK("pdf/26.05.06_oop_2023.pdf", '14-34',  "06_PK.csv", column_index=1)
-extract_PK("pdf/26.05.07_oop_2023.pdf", '13-end', "07_PK.csv", column_index=1)
+# Извлечение УК и ОПК для всех специальностей
+extract_competencies("pdf/26.05.06_oop_2023.pdf", '5-7',    "26.00.00_UK.csv",  column_index=1)
+extract_competencies("pdf/26.05.06_oop_2023.pdf", '8-9',    "26.00.00_OPK.csv", column_index=1)
+
+# Извлечение ПК для каждой специальности
+extract_competencies("pdf/26.05.05_oop_2023.pdf", '8-20',   "26.05.05_PK.csv",  column_index=0)
+extract_competencies("pdf/26.05.06_oop_2023.pdf", '14-34',  "26.05.06_PK.csv",  column_index=1)
+extract_competencies("pdf/26.05.07_oop_2023.pdf", '13-end', "26.05.07_PK.csv",  column_index=1)
