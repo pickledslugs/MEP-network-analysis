@@ -66,8 +66,7 @@ def extract_competencies(pdf_file, pages_range, output_filename, column_index=1)
             merged_df = merged_df[['Код', 'Наименование']]
 
             # Экспорт в csv
-            merged_df.to_csv(output_path, index=False, encoding='windows-1251', quoting=csv.QUOTE_NONNUMERIC)
-            # merged_df.to_csv(output_path, index=False, encoding='utf-8', quoting=csv.QUOTE_NONNUMERIC)
+            merged_df.to_csv(output_path, index=False, encoding='utf-8', quoting=csv.QUOTE_NONNUMERIC)
 
             print(f"Сохранено в {output_path}")
         else:
