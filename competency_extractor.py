@@ -5,25 +5,25 @@ import re
 import os
 
 def extract_competencies(pdf_file, pages_range, output_filename, column_index=1):
-    export_folder = "extracted"  # Директория экспорта .csv таблиц
+    export_folder = "extracted" # Директория экспорта .csv таблиц
 
     try:
         # Попытка чтения таблиц из указанного PDF и их объединения в датафрейм
         tables = camelot.read_pdf(pdf_file, pages=pages_range)
         
         if tables:
-            # Конкатенация таблиц в датафрейм
+            # Запись таблиц в датафрейм
             merged_df = pd.DataFrame()
             for table in tables:
                 merged_df = pd.concat([merged_df, table.df], ignore_index=True)
             
             # Очистка первой колонки таблицы
-            pk_col = merged_df.iloc[:, column_index]  # Выбор колонки таблицы
+            pk_col = merged_df.iloc[:, column_index] # Выбор колонки таблицы
             clean_col = pk_col.str.replace(r'-?\n', '', regex=True).str.replace(r'\n', '', regex=True) # Очистка мусорных символов (regex)
-            clean_col = clean_col.apply(lambda x: re.sub(r'\s+', ' ', x))  # Удаление лишних пробелов
-            clean_col = clean_col.apply(lambda x: x.replace('.', ''))  # Удаление точек
+            clean_col = clean_col.apply(lambda x: re.sub(r'\s+', ' ', x)) # Удаление лишних пробелов
+            clean_col = clean_col.apply(lambda x: x.replace('.', '')) # Удаление точек
 
-            # Фильтрация строк, начинающихся с кода компетенции или строчной буквы (для переносов)
+            # Фильтрация строк, начинающихся с кода компетенции или строчной буквы (для переносов слов)
             clean_col = clean_col[clean_col.apply(lambda x: re.match(r'^УК|ОПК|ПК|[а-я]', x) is not None)]
 
             # Инициализация списка для хранения строк
@@ -37,11 +37,11 @@ def extract_competencies(pdf_file, pages_range, output_filename, column_index=1)
                 else:
                     # Проверка на перенесенные слова
                     if previous_row.endswith('-'):
-                        merged_table[-1] = merged_table[-1][:-1] + row  # Удаление дефиса перед конкатенацией
+                        merged_table[-1] = merged_table[-1][:-1] + row # Удаление дефиса перед конкатенацией
                     else:
                         # Проверка на то, что строка НЕ начинается с кода компетенции
                         if not (row.startswith("УК") or row.startswith("ОПК") or row.startswith("ПК")):
-                            merged_table[-1] += " " + row  # Конкатенация с предыдущей строкой
+                            merged_table[-1] += " " + row # Конкатенация с предыдущей строкой
                         else:
                             merged_table.append(row)
                 
