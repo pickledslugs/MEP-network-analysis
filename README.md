@@ -1,11 +1,11 @@
 # Maritime Personnel Competency Correspondence analysis
-Network analysis of maritime personnel FGOS competencies correspondence with the STCW code based on MSUN higher educational programs:
+Network analysis of maritime personnel competencies correspondence with the STCW code based on MSUN higher educational programs:
 - 26.05.05 (Navigation),
 - 26.05.06 (Operation of ship power plants),
 - 26.05.07 (Operation of ship electrical and automation equipment)
 
 pdf folder contains educational programs for specialties listed above
-csv folder contains data for graph building both general and separated by ed. programs
+data folder contains data for graph building in Gephi
 competency_extractor.py by default extracts competencies (УК, ОПК, ПК) from OOP pdf files in /pdf to csv documents in /extracted
 Extractor functionality can be customised:
 
