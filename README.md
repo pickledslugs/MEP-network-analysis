@@ -1,12 +1,12 @@
-# Maritime education programs network analysis
-Network analysis of maritime personnel educational program elements in correspondence with the STCW code based on Admiral Nevelskoy Maritime State University higher educational programs of higher education:
-- 26.05.05 (Navigation),
-- 26.05.06 (Operation of ship power plants),
-- 26.05.07 (Operation of ship electrical and automation equipment)
+# Network analysis of maritime educational programs
+Network analysis of maritime educational program elements in correspondence with the STCW code based on data from Admiral Nevelskoy Maritime State University educational programs of higher education:
+- 26.05.05 Navigation;
+- 26.05.06 Operation of ship power plants;
+- 26.05.07 Operation of ship electrical and automation equipment.
 
-pdf folder contains educational programs for specialties listed above.
-data folder contains nodes and adjacency list csv files ready to import to Gephi.
-competency_extractor.py by default extracts competencies (УК, ОПК, ПК) from OOP pdf files in /pdf to csv documents in /extracted.
+pdf folder contains educational programs for training programs listed above.
+data folder contains nodes.csv and adjacency_list.csv datasets for importing to Gephi graph software.
+competency_extractor.py (by default) extracts competencies (УК, ОПК, ПК) from files in /pdf to CSV documents in /extracted.
 Extractor functionality can be customised:
 
 ``` python
