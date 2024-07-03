@@ -1,5 +1,5 @@
-# Maritime Personnel Competency Correspondence analysis
-Network analysis of maritime personnel competencies correspondence with the STCW code based on MSUN higher educational programs:
+# Maritime education programs network analysis
+Network analysis of maritime personnel educational program elements in correspondence with the STCW code based on Admiral Nevelskoy Maritime State University higher educational programs of higher education:
 - 26.05.05 (Navigation),
 - 26.05.06 (Operation of ship power plants),
 - 26.05.07 (Operation of ship electrical and automation equipment)
